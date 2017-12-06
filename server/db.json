@@ -21,14 +21,12 @@
       "featured": false
     },
     {
-      "id": 2,
-      "name": "Emily Keator",
-      "userID": 1,
-      "image": "http://media2.giphy.com/media/nVXzt7FSJlX7W/giphy.gif",
-      "title": "What to do if you think your mentor is an alien",
-      "subTitle": "It's probably Alan",
-      "text": "If you think that your alien is a mentor, there are several steps to take. \n\n. Report your suspicions to Jeremy, and provide tinfoil hats for the both of you so the alien won't figure it out. \n\n. Ask them if they ate a strange food for breakfast. Aliens, attempting to blend in, will probably say yes. \n\n\n. Create a website that requires them to login and give them the username \"Alien\", and see if they react. If they react then they are an Alien. If they scream at the mention of 'React', then they are probably just an Angular-biased person. \n\n\n\n. Pepper them with questions about their life growing up on Earth. If they get nervous, report them to NASA immediately.",
-      "featured": true
+      "title": "yooooo",
+      "subTitle": "",
+      "image": "",
+      "text": "iioeopritpeor",
+      "confirm": "",
+      "id": 2
     },
     {
       "id": 3,
@@ -221,6 +219,13 @@
       "image": "https://unsplash.it/700/400",
       "text": "dasj;lfksjfl;aksdjflaskj",
       "id": 22
+    },
+    {
+      "title": "this is a blog",
+      "subTitle": "wow blog",
+      "image": "",
+      "text": "no",
+      "id": 23
     }
   ],
   "users": [
@@ -301,6 +306,51 @@
       "name": "Leo",
       "img": "https://unsplash.it/300/?random",
       "desc": "I'm not real. I'm just a pseudonym of a guy that doesn't like waiting for fast food workers to figure out how to spell his name."
+    },
+    {
+      "name": "gabriella",
+      "img": "",
+      "desc": "",
+      "id": 13
+    },
+    {
+      "name": {
+        "name": "gabriella",
+        "img": "",
+        "desc": "",
+        "id": 13
+      },
+      "img": "",
+      "desc": "",
+      "id": 14
+    },
+    {
+      "name": {
+        "name": {
+          "name": "gabriella",
+          "img": "",
+          "desc": "",
+          "id": 13
+        },
+        "img": "",
+        "desc": "",
+        "id": 14
+      },
+      "img": "",
+      "desc": "",
+      "id": 15
+    },
+    {
+      "name": "gabriella",
+      "img": "",
+      "desc": "awesome",
+      "id": 16
+    },
+    {
+      "name": "gab",
+      "img": "",
+      "desc": "",
+      "id": 17
     }
   ]
 }

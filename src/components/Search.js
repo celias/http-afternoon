@@ -11,21 +11,42 @@ class Search extends Component{
             blogResults: [],
             userResults: [],
             searchType: 'blogs',
-        }
+        } 
+        this.search = this.search.bind(this)
     }
     
     
     // insert search method
+    search(event){
+        event.preventDefault()
+        axios.get(`/api/${this.state.searchType}?q=${this.state.searchTerm}`).then(response => {
+            
+            if(this.state.searchType === "blogs") {
+                this.props.history.push(makeQuery('/search?',{q:this.state.searchTerm,type:this.state.searchType}))
+                this.setState({ blogResults: response.data, userResults: [] })
+            } else {
+                this.props.history.push(makeQuery('/search?',{q:this.state.searchTerm,type:this.state.searchType}))
+                this.setState({ userResults: response.data, userResults: [] })
+            }
+        }).catch(console.log)
+        
+    }
+    
     
     
     render(){
-        // map over the blogResults and userResults here, replace the empty arrays.
-        const blogResults = []
-        const userResults = []
+        // map over the blogResults and userResults here, replace the empty arrays
+
+        const blogResults = this.state.blogResults.map((c, i)=> <BlogTile key={i} blog={c}/>)
+
+        const userResults = this.state.userResults.map((c, i)=> <UserTile key={i} blog={c}/>)
 
         return(
             <div className='content search-view' >
-                <form className='search-group' onSubmit={e=>this.search(e)} >
+                <form className='search-group' onSubmit={e => {
+                    console.log(this)
+                    
+                    this.search(e)}} >
                     <label htmlFor="">Search Blog</label>
                     <input autoFocus onChange={e=>this.changeSearch(e.target.value)} value={this.state.searchTerm} type="text"/>
                     <div className='search-type'>
