@@ -16,9 +16,9 @@ class Home extends Component{
     }
 
     // insert componentWillMount:
-    componentWillMount(){
+    componentDidMount(){
         axios.get('/api/featured').then(response => {
-            console.log(response);
+            // console.log(response);
             this.setState({ 
                 featured: response.data,
                 index: (~~(Math.random() * response.data.length) + 0),

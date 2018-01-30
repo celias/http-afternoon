@@ -15,8 +15,9 @@ class NewUser extends Component{
     
     // insert addUser
     addUser(){
-        axios.post(`/api/users/`, this.state).then(response =>{
-            console.log(response)
+        axios.post(`/api/users/`, this.state)
+        .then(response =>{
+            // console.log(response)
             let user = response.data
             this.props.history.push(`/user/${user.id}`)
         })
@@ -27,8 +28,9 @@ class NewUser extends Component{
     
     updateUser(){
         let id = this.props.match.params.id 
-        axios.put(`/api/users/${id}`, this.state).then(response => {
-            console.log(response)
+        axios.put(`/api/users/${id}`, this.state)
+        .then(response => {
+            // console.log(response)
             let user = response.data
             this.props.history.push(`/user/${user.id}`)
         })
@@ -39,8 +41,9 @@ class NewUser extends Component{
     // insert deleteUser
     deleteUser(){
         let id = this.props.match.params.id
-        axios.delete(`/api/users${id}`).then(response =>{
-            this.props.history.push(`/search/`)  
+        axios.delete(`/api/users${id}`)
+        .then(response =>{
+        this.props.history.push(`/search/`)  
         })
         
     }

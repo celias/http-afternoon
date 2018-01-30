@@ -28,7 +28,8 @@ class Add extends Component {
             image: this.state.image,
             text: this.state.text
         }
-        axios.post('/api/blogs', body).then(response => {
+        axios.post('/api/blogs', body)
+        .then(response => {
             this.props.history.push(`/blog/${response.data.id}`)
         }).catch(console.log)
     }

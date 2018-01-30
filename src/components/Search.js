@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BlogTile from './subcomponents/BlogTile';
 import UserTile from './subcomponents/UserTile';
+
 import axios from 'axios';
 
 class Search extends Component{
@@ -19,20 +20,24 @@ class Search extends Component{
     // insert search method
     search(event){
         event.preventDefault()
-        axios.get(`/api/${this.state.searchType}?q=${this.state.searchTerm}`).then(response => {
+        const { searchTerm, searchType }=this.state;
+        axios.get(`/api/${searchType}?q=${searchTerm}`).then(response => {
             
-            if(this.state.searchType === "blogs") {
-                this.props.history.push(makeQuery('/search?',{q:this.state.searchTerm,type:this.state.searchType}))
-                this.setState({ blogResults: response.data, userResults: [] })
+            if(searchType === "blogs") {
+                this.props.history.push(makeQuery('/search?',{q:searchTerm,type:searchType}))
+                this.setState({ 
+                    blogResults: response.data, 
+                    userResults: [] 
+                })
             } else {
-                this.props.history.push(makeQuery('/search?',{q:this.state.searchTerm,type:this.state.searchType}))
-                this.setState({ userResults: response.data, userResults: [] })
+                this.props.history.push(makeQuery('/search?',{q:searchTerm,type:searchType}))
+                this.setState({ 
+                    userResults: response.data, 
+                    userResults: [] })
             }
         }).catch(console.log)
         
     }
-    
-    
     
     render(){
         // map over the blogResults and userResults here, replace the empty arrays

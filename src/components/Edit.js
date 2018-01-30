@@ -21,8 +21,9 @@ class Edit extends Component {
     }
 
     // insert componentWillMount
-    componentWillMount(){
-        axios.get(`/api/blogs/id${this.props.match.params.id}`).then(response => {
+    componentDidMount(){
+        axios.get(`/api/blogs/id${this.props.match.params.id}`)
+        .then(response => {
             this.setState({
                 blog: response.data
             }) 
@@ -34,14 +35,16 @@ class Edit extends Component {
     // insert updatePost 
     updatePost(){
         let body = {title: this.state.title, subTitle: this.state.subTitle, image: this.state.image, text: this.state.text, confirm: this.state.confirm}
-        axios.put(`/api/blogs/${this.props.match.params.id}`, body).then(response =>{
+        axios.put(`/api/blogs/${this.props.match.params.id}`, body)
+        .then(response =>{
             this.props.history.push(`/blog/${this.props.match.params.id}`)
         }).catch(console.log)
     }
 
     // Insert into the deletePost 
     deletePost(){
-        axios.delete(`/api/blogs/${this.props.match.params.id}`).then(response => {
+        axios.delete(`/api/blogs/${this.props.match.params.id}`)
+        .then(response => {
             this.props.history.push('/search')
             
         }).catch(console.log)

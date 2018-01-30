@@ -3,19 +3,63 @@ import { Link } from 'react-router-dom';
 import BlogTile from './subcomponents/BlogTile';
 
 // import axios
+import axios from 'axios';
 
 class User extends Component{
     constructor(){
-        super()
+        super();
 
         this.state={
             user: {},
             posts: []
         }
+
+        this.getUser1 = this.getUser1.bind(this);
+        this.getPosts1 = this.getPosts1.bind(this);
+
     }
 
     // insert componentWillMount
     
+        componentDidMount(){
+            console.log(this.getPosts1)
+            let userID = this.props.match.params.id;
+            // axios.get(`/api/user/${userID}`)
+            // .then(response=>{
+            //     let user = response.data
+            //     this.setState({
+            //         user: user
+            //     })
+            // })
+            // axios.get(`/api/blogs?userID=${userID}`)
+            // .then(response=>{
+            //     // console.log(response);
+            //     this.setState({
+            //         posts: response.data
+            //     })
+            // })
+            // let getUser1 = () => {
+            //     return axios.get(`/api/user/${userID}`)
+            // }
+            // let getPosts1 = () => {
+            //     return axios.get(`/api/blogs?userID=${userID}`)
+            // }
+            axios.all([this.getUser1(), this.getPosts1()])
+            .then(axios.spread((response1, response2) => {
+                console.log(response1.data, response2.data)
+                // let user = response2.data
+                this.setState({
+                    user: response1.data,
+                    posts: response2.data
+                })
+            })).catch(console.log);
+        }
+         getUser1(){
+          return axios.get(`/api/user/${this.props.match.params.id}`)
+        }
+         getPosts1(){
+            return axios.get(`/api/blogs?userID=${this.props.match.params.id}`)
+        }
 
     render(){
         const user = this.state.user

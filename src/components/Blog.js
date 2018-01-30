@@ -18,9 +18,8 @@ class Blog extends Component{
         axios.get(`/api/blog/${this.props.match.params.id}`).then(response => {
             this.setState({
                 blog: response.data
-                
             })
-            console.log(response);
+            // console.log(response);
         }) .catch(console.log);
     }
 
